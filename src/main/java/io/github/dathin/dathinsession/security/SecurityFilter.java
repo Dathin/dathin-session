@@ -28,13 +28,10 @@ public class SecurityFilter extends DathinSecurityFilter {
 
     private final AuthenticationService authenticationService;
 
-    private final UserService userService;
-
-    public SecurityFilter(JwtService jwtService, SecurityFilterExceptionHandler securityFilterExceptionHandler, AuthenticationService authenticationService, UserService userService) {
+    public SecurityFilter(JwtService jwtService, SecurityFilterExceptionHandler securityFilterExceptionHandler, AuthenticationService authenticationService) {
         this.jwtService = jwtService;
         this.securityFilterExceptionHandler = securityFilterExceptionHandler;
         this.authenticationService = authenticationService;
-        this.userService = userService;
     }
 
     @Override
