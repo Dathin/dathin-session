@@ -12,6 +12,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
+import java.time.ZoneId;
 import java.util.Date;
 
 @Service
@@ -36,7 +37,6 @@ public class JwtService {
 			var claims = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(removeBearer(token)).getBody();
 			var userToken = new UserToken();
 			userToken.setId(claims.get("userId", Integer.class));
-			userToken.setExpiresAt(claims.getExpiration());
 			return userToken;
 		}
 		catch (JwtException | NullPointerException ex) {
