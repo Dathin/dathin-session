@@ -8,14 +8,17 @@ services:
       POSTGRES_PASSWORD: xDxDxDxD
     volumes:
       - postgres-volume:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
+    networks:
+      - dathin-session
   redis:
     image: redis:6.2.3
     restart: always
-    ports:
-      - 6379:6379
+    networks:
+      - dathin-session
 
 volumes:
   postgres-volume:
     driver: local
+
+networks:
+  dathin-session:

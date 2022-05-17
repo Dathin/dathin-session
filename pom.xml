@@ -5,95 +5,21 @@
     <parent>
         <groupId>io.github.dathin.boot</groupId>
         <artifactId>dathin-starter-parent</artifactId>
-        <version>0.0.3-SNAPSHOT</version>
+        <version>1</version>
         <relativePath/>
     </parent>
     <groupId>io.github.dathin</groupId>
     <artifactId>dathin-session</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1</version>
     <name>dathin-session</name>
     <description>dathin-session</description>
-    <properties>
-        <java.version>11</java.version>
-    </properties>
+    <packaging>pom</packaging>
 
-    <dependencies>
-
-        <dependency>
-            <groupId>io.github.dathin.boot</groupId>
-            <artifactId>dathin-starter-openapi</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.github.dathin.boot</groupId>
-            <artifactId>dathin-starter-errorhandling</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.github.dathin.boot</groupId>
-            <artifactId>dathin-starter-model</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.github.dathin.boot</groupId>
-            <artifactId>dathin-starter-authorizer</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jdbc</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-api</artifactId>
-            <version>0.11.2</version>
-        </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-impl</artifactId>
-            <version>0.11.2</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-jackson</artifactId>
-            <version>0.11.2</version>
-            <scope>runtime</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>4.2.2</version>
-            <type>jar</type>
-        </dependency>
-
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
-            <version>42.2.20</version>
-        </dependency>
-
-    </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+    <modules>
+        <module>dathin-session-service</module>
+        <module>dathin-session-ft</module>
+        <module>dathin-session-model</module>
+        <module>dathin-session-client</module>
+    </modules>
 
 </project>
