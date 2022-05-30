@@ -11,15 +11,15 @@ import javax.sql.DataSource;
 @Configuration
 public class PostgresConfig {
 
-    @Bean
-    @ConfigurationProperties(prefix = "user.postgres")
-    public DataSource postgresDataSource() {
-        return DataSourceBuilder.create().build();
-    }
+	@Bean
+	@ConfigurationProperties(prefix = "user.postgres")
+	public DataSource postgresDataSource() {
+		return DataSourceBuilder.create().build();
+	}
 
-    @Bean
-    public JdbcTemplate postgresJdbcTemplate(DataSource dataSource) {
-        return new JdbcTemplate(dataSource);
-    }
+	@Bean
+	public JdbcTemplate postgresJdbcTemplate(DataSource dataSource) {
+		return new JdbcTemplate(dataSource);
+	}
 
 }

@@ -2,7 +2,6 @@ package io.github.dathin.dathinsession.model.user;
 
 import java.security.Principal;
 
-
 public class User implements Principal {
 
 	private int id;

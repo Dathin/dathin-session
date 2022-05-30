@@ -26,8 +26,8 @@ public class JwtService {
 		long currentTimeInMs = System.currentTimeMillis();
 		long oneDayInMs = 86400000;
 		return Jwts.builder().setIssuedAt(new Date(currentTimeInMs))
-				.setExpiration(new Date(currentTimeInMs + oneDayInMs)).claim("userId", user.getId())
-				.signWith(key).compact();
+				.setExpiration(new Date(currentTimeInMs + oneDayInMs)).claim("userId", user.getId()).signWith(key)
+				.compact();
 	}
 
 	public UserToken validateToken(String token) {

@@ -20,13 +20,13 @@ public class UserDao {
 	}
 
 	public void insert(UserRequest userRequest) {
-		jdbcTemplate.update("INSERT INTO USERS (EMAIL, PASSWORD) VALUES (?, ?)",
-				userRequest.getEmail(), userRequest.getPassword());
+		jdbcTemplate.update("INSERT INTO USERS (EMAIL, PASSWORD) VALUES (?, ?)", userRequest.getEmail(),
+				userRequest.getPassword());
 	}
 
 	public Optional<User> getPasswordToLogin(UserRequest userRequest) {
-		return jdbcTemplate.query("SELECT * FROM USERS WHERE EMAIL = ? LIMIT 1",
-				optionalUserResultSetExtractor, userRequest.getEmail());
+		return jdbcTemplate.query("SELECT * FROM USERS WHERE EMAIL = ? LIMIT 1", optionalUserResultSetExtractor,
+				userRequest.getEmail());
 	}
 
 	private final ResultSetExtractor<Optional<User>> optionalUserResultSetExtractor = resultSet -> {

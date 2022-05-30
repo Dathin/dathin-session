@@ -10,12 +10,12 @@ import redis.clients.jedis.JedisPoolConfig;
 @Configuration
 public class RedisConfig {
 
-    @Bean
-    @Primary
-    public JedisPool getJedisPool(@Value("${token.redis.host}") String redisHost){
-        var jedisPoolConfig = new JedisPoolConfig();
-        jedisPoolConfig.setJmxEnabled(false);
-        return new JedisPool(jedisPoolConfig,redisHost, 6379);
-    }
+	@Bean
+	@Primary
+	public JedisPool getJedisPool(@Value("${token.redis.host}") String redisHost) {
+		var jedisPoolConfig = new JedisPoolConfig();
+		jedisPoolConfig.setJmxEnabled(false);
+		return new JedisPool(jedisPoolConfig, redisHost, 6379);
+	}
 
 }

@@ -38,7 +38,8 @@ public class UserController {
 	}
 
 	@PostMapping("validate")
-	public ResponseEntity<Void> validate(@RequestHeader(name = HttpHeaders.AUTHORIZATION, required = false) String token) {
+	public ResponseEntity<Void> validate(
+			@RequestHeader(name = HttpHeaders.AUTHORIZATION, required = false) String token) {
 		userService.validate(token);
 		return ResponseEntity.ok().build();
 	}

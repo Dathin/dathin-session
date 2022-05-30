@@ -18,36 +18,38 @@ import java.io.IOException;
 @Component
 public class SecurityFilter extends DathinSecurityFilter {
 
-    private final JwtService jwtService;
+	private final JwtService jwtService;
 
-    private final SecurityFilterExceptionHandler securityFilterExceptionHandler;
+	private final SecurityFilterExceptionHandler securityFilterExceptionHandler;
 
-    private final AuthenticationService authenticationService;
+	private final AuthenticationService authenticationService;
 
-    public SecurityFilter(JwtService jwtService, SecurityFilterExceptionHandler securityFilterExceptionHandler, AuthenticationService authenticationService) {
-        this.jwtService = jwtService;
-        this.securityFilterExceptionHandler = securityFilterExceptionHandler;
-        this.authenticationService = authenticationService;
-    }
+	public SecurityFilter(JwtService jwtService, SecurityFilterExceptionHandler securityFilterExceptionHandler,
+			AuthenticationService authenticationService) {
+		this.jwtService = jwtService;
+		this.securityFilterExceptionHandler = securityFilterExceptionHandler;
+		this.authenticationService = authenticationService;
+	}
 
-    @Override
-    protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
-                                    FilterChain filterChain) throws ServletException, IOException {
-        var token = httpServletRequest.getHeader(HttpHeaders.AUTHORIZATION);
-        try {
-            if (token != null) {
-                setUserFromToken(token);
-            }
-            filterChain.doFilter(httpServletRequest, httpServletResponse);
-        } catch (UnauthorizedException ex) {
-            securityFilterExceptionHandler.commence(httpServletRequest, httpServletResponse,
-                    new CustomAuthenticationException(ex.getError()));
-        }
-    }
+	@Override
+	protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
+			FilterChain filterChain) throws ServletException, IOException {
+		var token = httpServletRequest.getHeader(HttpHeaders.AUTHORIZATION);
+		try {
+			if (token != null) {
+				setUserFromToken(token);
+			}
+			filterChain.doFilter(httpServletRequest, httpServletResponse);
+		}
+		catch (UnauthorizedException ex) {
+			securityFilterExceptionHandler.commence(httpServletRequest, httpServletResponse,
+					new CustomAuthenticationException(ex.getError()));
+		}
+	}
 
-    private void setUserFromToken(String token) {
-        var user = jwtService.validateToken(token);
-        authenticationService.setAuthenticatedUser(user);
-    }
+	private void setUserFromToken(String token) {
+		var user = jwtService.validateToken(token);
+		authenticationService.setAuthenticatedUser(user);
+	}
 
 }
